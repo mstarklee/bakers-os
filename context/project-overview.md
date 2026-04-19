@@ -1,4 +1,4 @@
-# 🐼 Pandough House — Micro-ERP for Home Bakers
+# 🐼 Baker-Os — Micro-ERP for Home Bakers
 
 > **Project Overview v1.0** · Next.js Full-Stack SaaS Application
 > **Repo**: `bakers-os`
@@ -23,13 +23,13 @@
 
 ---
 
-## Problem Statement
+## Problem Statement (Core Idea)
 
 Home bakers run their entire business from WhatsApp chats, handwritten notebooks, and mental math. There is **no affordable, purpose-built tool** that ties together inventory, recipes, costing, orders, and finances into a single workflow.
 
 Enterprise ERPs are overkill. Spreadsheets break. Instagram DMs get lost.
 
-**Pandough House** is an AI-powered command center designed exclusively for home bakers — turning chaotic cottage-kitchen operations into a streamlined, profitable business. It connects the full lifecycle:
+**Baker-Os** is an AI-powered command center designed exclusively for home bakers — turning chaotic cottage-kitchen operations into a streamlined, profitable business. It connects the full lifecycle:
 
 ```
 Buy Ingredients → Build Recipes → Price Products → Take Orders → Invoice & Get Paid
@@ -581,30 +581,68 @@ enum AlertSeverity {
 
 ## UI / UX Design System
 
-### Color Theme — "Warm Terracotta Kitchen"
+### Color Theme — shadcn/ui Design Tokens
 
-A palette inspired by a sunlit bakery kitchen: warm neutrals, earthy terracotta accents, and creamy backgrounds that feel inviting and food-adjacent — not cold SaaS blue.
+CSS custom properties following the shadcn/ui convention. Each token has a light and dark mode value.
 
-#### Colors
+#### Base & Layout Colors
 
-| Token | Value | Usage |
+| Token | Light | Dark |
 | :--- | :--- | :--- |
-| `--color-bg-primary` | `#FDF6F0` | Warm cream — page background |
-| `--color-bg-card` | `#FFFFFF` | Clean white — card surfaces |
-| `--color-bg-sidebar` | `#2C1810` | Deep espresso — sidebar/nav |
-| `--color-bg-muted` | `#F5EDE6` | Oat milk — muted sections |
-| `--color-accent-primary` | `#C8553D` | Terracotta — primary buttons, links, active states |
-| `--color-accent-hover` | `#A8432F` | Burnt sienna — hover states |
-| `--color-accent-secondary` | `#E8985A` | Golden caramel — secondary highlights, badges |
-| `--color-accent-success` | `#5B8C5A` | Sage green — paid, in-stock, healthy margin |
-| `--color-accent-warning` | `#D4A843` | Honey gold — low stock, approaching threshold |
-| `--color-accent-danger` | `#C1392B` | Chili red — margin breach, overdue, critical |
-| `--color-text-primary` | `#2C1810` | Espresso — headings, body text |
-| `--color-text-secondary` | `#6B5B53` | Cocoa — secondary text, labels |
-| `--color-text-muted` | `#A39288` | Dusty mauve — placeholder, disabled |
-| `--color-text-on-dark` | `#FDF6F0` | Cream — text on dark sidebar |
-| `--color-border` | `#E3D5CA` | Latte — card borders, dividers |
-| `--color-border-focus` | `#C8553D` | Terracotta — focus rings |
+| `--background` | `#ffffff` | `oklch(0.145 0 0)` |
+| `--foreground` | `oklch(0.145 0 0)` | `oklch(0.985 0 0)` |
+| `--border` | `rgba(0, 0, 0, 0.1)` | `oklch(0.269 0 0)` |
+| `--input` | `transparent` | `oklch(0.269 0 0)` |
+| `--input-background` | `#f3f3f5` | — |
+| `--switch-background` | `#cbced4` | — |
+| `--ring` | `oklch(0.708 0 0)` | `oklch(0.439 0 0)` |
+
+#### Component Colors
+
+| Token | Light | Dark |
+| :--- | :--- | :--- |
+| `--primary` | `#030213` | `oklch(0.985 0 0)` |
+| `--primary-foreground` | `oklch(1 0 0)` | `oklch(0.205 0 0)` |
+| `--secondary` | `oklch(0.95 0.0058 264.53)` | `oklch(0.269 0 0)` |
+| `--secondary-foreground` | `#030213` | `oklch(0.985 0 0)` |
+| `--muted` | `#ececf0` | `oklch(0.269 0 0)` |
+| `--muted-foreground` | `#717182` | `oklch(0.708 0 0)` |
+| `--accent` | `#e9ebef` | `oklch(0.269 0 0)` |
+| `--accent-foreground` | `#030213` | `oklch(0.985 0 0)` |
+| `--destructive` | `#d4183d` | `oklch(0.396 0.141 25.723)` |
+| `--destructive-foreground` | `#ffffff` | `oklch(0.637 0.237 25.331)` |
+
+#### Surface & Container Colors
+
+| Token | Light | Dark |
+| :--- | :--- | :--- |
+| `--card` | `#ffffff` | `oklch(0.145 0 0)` |
+| `--card-foreground` | `oklch(0.145 0 0)` | `oklch(0.985 0 0)` |
+| `--popover` | `oklch(1 0 0)` | `oklch(0.145 0 0)` |
+| `--popover-foreground` | `oklch(0.145 0 0)` | `oklch(0.985 0 0)` |
+
+#### Chart Colors
+
+| Token | Light | Dark |
+| :--- | :--- | :--- |
+| `--chart-1` | `oklch(0.646 0.222 41.116)` | `oklch(0.488 0.243 264.376)` |
+| `--chart-2` | `oklch(0.6 0.118 184.704)` | `oklch(0.696 0.17 162.48)` |
+| `--chart-3` | `oklch(0.398 0.07 227.392)` | `oklch(0.769 0.188 70.08)` |
+| `--chart-4` | `oklch(0.828 0.189 84.429)` | `oklch(0.627 0.265 303.9)` |
+| `--chart-5` | `oklch(0.769 0.188 70.08)` | `oklch(0.645 0.246 16.439)` |
+
+#### Sidebar Theme Colors
+
+| Token | Light | Dark |
+| :--- | :--- | :--- |
+| `--sidebar` | `oklch(0.985 0 0)` | `oklch(0.205 0 0)` |
+| `--sidebar-foreground` | `oklch(0.145 0 0)` | `oklch(0.985 0 0)` |
+| `--sidebar-primary` | `#030213` | `oklch(0.488 0.243 264.376)` |
+| `--sidebar-primary-foreground` | `oklch(0.985 0 0)` | `oklch(0.985 0 0)` |
+| `--sidebar-accent` | `oklch(0.97 0 0)` | `oklch(0.269 0 0)` |
+| `--sidebar-accent-foreground` | `oklch(0.205 0 0)` | `oklch(0.985 0 0)` |
+| `--sidebar-border` | `oklch(0.922 0 0)` | `oklch(0.269 0 0)` |
+| `--sidebar-ring` | `oklch(0.708 0 0)` | `oklch(0.439 0 0)` |
 
 #### Typography
 
@@ -628,6 +666,12 @@ A palette inspired by a sunlit bakery kitchen: warm neutrals, earthy terracotta 
 --shadow-elevated: 0 4px 6px rgba(44, 24, 16, 0.08),
                    0 12px 28px rgba(44, 24, 16, 0.06);
 ```
+### Screenshots
+
+Refer the screenshots below as a base for the Dashboard UI. It Does't have to be exact. use it for a referance.
+@context\screenshots\dashboard.png
+@context\screenshots\orders.png
+@context\screenshots\modal.png
 
 ### Layout Principles
 
@@ -728,7 +772,6 @@ actions/
 ## AI Feature Architecture
 
 All AI features use the Anthropic Claude API (Sonnet) via server-side route handlers. No AI calls from the client.
-
 
 ### AI Endpoint Reference
 
